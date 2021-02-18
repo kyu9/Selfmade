@@ -1,6 +1,6 @@
 buildscript{
     ext{
-        springBootVersion = '2.1.7.RELEASE'
+        springBootVersion = '2.1.9.RELEASE'
     }
     repositories{
         mavenCentral()
@@ -9,6 +9,9 @@ buildscript{
     dependencies{
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
+}
+plugins {
+    id 'java'
 }
 
 apply plugin: 'java'
@@ -26,6 +29,10 @@ repositories {
 }
 
 dependencies {
+    annotationProcessor("org.projectlombok:lombok")
+    compileOnly("org.projectlombok:lombok")
+    implementation 'junit:junit:4.12'
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.assertj:assertj-core:3.11.1')
 }
